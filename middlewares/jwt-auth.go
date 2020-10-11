@@ -6,7 +6,7 @@ import (
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/service"
+	"github.com/mic3ael/pragmaticreviews/services"
 )
 
 // AuthorizeJWT validates the token from the http request, returning a 401 if it's not valid
@@ -16,7 +16,7 @@ func AuthorizeJWT() gin.HandlerFunc {
 		authHeader := c.GetHeader("Authorization")
 		tokenString := authHeader[len(BEARER_SCHEMA):]
 
-		token, err := service.NewJWTService().ValidateToken(tokenString)
+		token, err := services.NewJWTService().ValidateToken(tokenString)
 
 		if token.Valid {
 			claims := token.Claims.(jwt.MapClaims)
