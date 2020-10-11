@@ -2,6 +2,7 @@ package services
 
 import (
 	"github.com/mic3ael/pragmaticreviews/entities"
+	"github.com/mic3ael/pragmaticreviews/repositories"
 )
 
 type VideoService interface {
@@ -10,7 +11,7 @@ type VideoService interface {
 }
 
 type videoService struct {
-	videos []entities.Video
+	videoRepository repositories.VideoRepository
 }
 
 func New() VideoService {
